@@ -8,14 +8,13 @@ import java.sql.Statement;
 
 public class EstadioRepository {
 
-	public static void insereEstadio (String nome,Integer capacidade, Integer cidade) throws SQLException {
+	public static void updateEstadio (Integer id, String nome) throws SQLException {
 		Connection conn = MyConnection.getInstance();
-		String insert = "INSERT INTO FUTEBOL.ESTADIO (NOME, CAPACIDADE, CIDADE) values (?, ?, ?)";
+		String insert = "UPDATE FUTEBOL.ESTADIO SET nome = ? where id = ?";
 		PreparedStatement preparedStatement = conn.prepareStatement(insert);
 		
 		preparedStatement.setString(1, nome);
-		preparedStatement.setInt(2, capacidade);
-		preparedStatement.setInt(3, cidade);
+		preparedStatement.setInt(2,  id);
 		
 		int linhasAfetadas = preparedStatement.executeUpdate();
 		
@@ -35,5 +34,30 @@ public class EstadioRepository {
 		}
 	}
 	
+	public static void listaTodosEstadios() throws SQLException {
+		Connection conn = MyConnection.getInstance();
+		Statement stmt = conn.createStatement();
+
+		String SQL = "SELECT * FROM Futebol.Estadio";
+		System.out.println(SQL);
+		ResultSet rs = stmt.executeQuery(SQL);
+
+		while (rs.next()) {
+			System.out.println(rs.getString("id") + " | " + rs.getString("nome") + " | " + rs.getString("cidade"));
+		}
+	}
+	
+	public static void deleteEstadio (Integer id) throws SQLException {
+		Connection conn = MyConnection.getInstance();
+		String insert = "DELETE FROM FUTEBOL.ESTADIO where id = ?";
+		PreparedStatement preparedStatement = conn.prepareStatement(insert);
+		
+		preparedStatement.setInt(1, id);
+		
+		int linhasAfetadas = preparedStatement.executeUpdate();
+		
+		System.out.println("O objeto afetou " + linhasAfetadas + " linha");
+	}
+
 	
 }
