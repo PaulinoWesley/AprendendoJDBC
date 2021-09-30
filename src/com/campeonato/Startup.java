@@ -48,7 +48,17 @@ public class Startup {
 //			CampeonatoRepository.listaCampeonatosPorId(3);
 //			CampeonatoRepository.deleteCampeonato(3);
 //			CampeonatoRepository.listaTodosCampeonatos();
-			PartidaRepository.inserePartida(LocalDateTime.of(2022,02,03,18,00,00), 2, 17, 18, 2, 1, 1, "1017");
+			LocalDateTime horarioMarcado = LocalDateTime.of(2022,02,03,18,00,00);
+			Integer estadio = 2;
+			Integer campeonato = 2;
+			Integer timeVisitante = 18;
+			Integer timeMandante = 3;
+			Integer golsTimeVisitante = 1;
+			Integer golsTimeMandante = 1;
+			String arbitro = "1018";
+			PartidaRepository.inserePartida(
+					horarioMarcado, estadio, campeonato, timeVisitante, 
+					timeMandante, golsTimeVisitante, golsTimeMandante, arbitro);
 			PartidaRepository.listaTodasPartidas();
 			PartidaRepository.updatePartida(19, "1020");
 			PartidaRepository.listaPartidaPorId(19);
