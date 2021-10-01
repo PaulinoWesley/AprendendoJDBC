@@ -11,6 +11,7 @@ import com.campeonato.repository.jdbc.EquipeRepository;
 import com.campeonato.repository.jdbc.EstadioRepository;
 import com.campeonato.repository.jdbc.JogadorRepository;
 import com.campeonato.repository.jdbc.PartidaRepository;
+import com.campeonato.repository.jdbc.TipoEventoRepository;
 
 public class Startup {
 	public static void main(String[] args) {
@@ -48,22 +49,27 @@ public class Startup {
 //			CampeonatoRepository.listaCampeonatosPorId(3);
 //			CampeonatoRepository.deleteCampeonato(3);
 //			CampeonatoRepository.listaTodosCampeonatos();
-			LocalDateTime horarioMarcado = LocalDateTime.of(2022,02,03,18,00,00);
-			Integer estadio = 2;
-			Integer campeonato = 2;
-			Integer timeVisitante = 18;
-			Integer timeMandante = 3;
-			Integer golsTimeVisitante = 1;
-			Integer golsTimeMandante = 1;
-			String arbitro = "1018";
-			PartidaRepository.inserePartida(
-					horarioMarcado, estadio, campeonato, timeVisitante, 
-					timeMandante, golsTimeVisitante, golsTimeMandante, arbitro);
-			PartidaRepository.listaTodasPartidas();
-			PartidaRepository.updatePartida(19, "1020");
-			PartidaRepository.listaPartidaPorId(19);
-			PartidaRepository.deletePartida(19);
-			PartidaRepository.listaTodasPartidas();
+//			LocalDateTime horarioMarcado = LocalDateTime.of(2022,02,03,18,00,00);
+//			Integer estadio = 2;
+//			Integer campeonato = 2;
+//			Integer timeVisitante = 18;
+//			Integer timeMandante = 3;
+//			Integer golsTimeVisitante = 1;
+//			Integer golsTimeMandante = 1;
+//			String arbitro = "1018";
+//			PartidaRepository.inserePartida(
+//					horarioMarcado, estadio, campeonato, timeVisitante, 
+//					timeMandante, golsTimeVisitante, golsTimeMandante, arbitro);
+//			PartidaRepository.listaTodasPartidas();
+//			PartidaRepository.updatePartida(19, "1020");
+//			PartidaRepository.listaPartidaPorId(19);
+//			PartidaRepository.deletePartida(19);
+//			PartidaRepository.listaTodasPartidas();
+			TipoEventoRepository.insereTipoEvento("Tiro Livre Direito", 20);
+			TipoEventoRepository.listaTodoTipoEvento();
+			TipoEventoRepository.updateTipoEvento(20, "Tiro livre indireto");
+			TipoEventoRepository.listaTipoEventoPorCodigo(20);
+			TipoEventoRepository.deleteTipoEvento(20);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
