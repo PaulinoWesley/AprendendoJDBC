@@ -8,23 +8,24 @@ public class Equipe {
 	private LocalDate dataCriacao;
 	private String cidadeSede;
 
-	public Equipe () {	}
-	
+	public Equipe() {
+	}
+
 	public Equipe(Integer id, String nome, LocalDate dataCriacao, String cidadeSede) {
 		this.id = id;
 		this.nome = nome;
 		this.dataCriacao = dataCriacao;
 		this.cidadeSede = cidadeSede;
 	}
-	
+
 	public Integer getId() {
 		return this.id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public LocalDate getDataCriacao() {
 		return dataCriacao;
 	}
@@ -48,7 +49,4 @@ public class Equipe {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-
-	
 }

@@ -31,13 +31,24 @@ public class PartidaRepository {
 		System.out.println("Insert: " + linhasAfetadas + " linhas afetadas");
 	}
 
-	public static void updatePartida(Integer id, String arbitro) throws SQLException {
+	public static void updatePartida(Integer id, String arbitro, LocalDateTime horarioMarcado,
+			Integer estadio, Integer campeonato, Integer timeVisitante, Integer timeMandante,
+			Integer golsTimeVisitante, Integer golsTimeMandante) throws SQLException {
 		Connection conn = MyConnection.getInstance();
-		String insert = "UPDATE FUTEBOL.PARTIDA SET arbitro = ? WHERE id = ?";
+		String insert = "UPDATE FUTEBOL.PARTIDA SET arbitro = ?, horarioMarcado = ?, estadio = ?,"
+				+ "campeonato = ?, timeVisitante = ?, timeMandante = ?,"
+				+ "golsTimeVisitante = ?, golsTimeMandate = ? WHERE id = ?";
 		PreparedStatement preparedStatement = conn.prepareStatement(insert);
 
 		preparedStatement.setString(1, arbitro);
-		preparedStatement.setInt(2, id);
+		preparedStatement.setTimestamp(2, Timestamp.valueOf(horarioMarcado));
+		preparedStatement.setInt(3, estadio);
+		preparedStatement.setInt(4, campeonato);
+		preparedStatement.setInt(5, timeVisitante);
+		preparedStatement.setInt(6, timeMandante);
+		preparedStatement.setInt(7, golsTimeVisitante);
+		preparedStatement.setInt(8, golsTimeMandante);
+		preparedStatement.setInt(9, id);
 
 		int linhasAfetadas = preparedStatement.executeUpdate();
 		System.out.println("Update: " + linhasAfetadas + " linhas afetadas.");
